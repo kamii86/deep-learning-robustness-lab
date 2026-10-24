@@ -1,0 +1,17 @@
+# Data downloaded at runtime
+/data/
+*.csv
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.DS_Store
+# Exports / local archives
+*.zip
+*.tar
+*.log
+# PyTorch checkpoints in artifacts/ are intentionally versioned.
