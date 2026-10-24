@@ -107,7 +107,7 @@
 | **Adversarial ML** | FGSM, PGD-L∞, PGD-L2, targeted PGD, PGD-7 adversarial training |
 | **Диагностика устойчивости** | PGD-100×5, входные градиенты, L0-атаки, catastrophic overfitting |
 
-В [`hw1.ipynb`](hw1.ipynb) сохранены код, открытые проверки, пояснения и результаты запуска. Это **учебный исследовательский notebook**, а не производственная библиотека с отдельным API.
+В [hw1.ipynb](https://github.com/kamii86/deep-learning-robustness-lab/blob/submission/hw1/hw1.ipynb) сохранены код, открытые проверки, пояснения и результаты запуска. Это **учебный исследовательский notebook**, а не производственная библиотека с отдельным API.
 
 ## Структура репозитория
 
@@ -132,7 +132,7 @@
 
 ## Как воспроизвести
 
-Самый простой способ — открыть [`hw1.ipynb`](hw1.ipynb) в [Google Colab](https://colab.research.google.com/), подключить GPU и выполнить ячейки по порядку. CIFAR-10 и FashionMNIST скачиваются автоматически.
+Самый простой способ — открыть [hw1.ipynb](https://github.com/kamii86/deep-learning-robustness-lab/blob/submission/hw1/hw1.ipynb), подключить GPU и выполнить ячейки по порядку. CIFAR-10 и FashionMNIST скачиваются автоматически.
 
 Конфигурация финального запуска:
 
@@ -150,6 +150,15 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m pip install jupyterlab
 jupyter lab
+```
+
+До объединения Pull Request полный код проекта, обученные модели и скрипт проверки доступны в ветке [`submission/hw1`](https://github.com/kamii86/deep-learning-robustness-lab/tree/submission/hw1).
+
+Для локального воспроизведения необходимо скачать именно эту ветку:
+
+```bash
+git clone -b submission/hw1 https://github.com/kamii86/deep-learning-robustness-lab.git
+cd deep-learning-robustness-lab
 ```
 
 Чтобы проверить сохранённую работу **без переобучения моделей**:
