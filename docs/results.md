@@ -1,6 +1,6 @@
 # Численные результаты финального запуска
 
-Все приведённые значения относятся к `FAST_MODE=False`. Машинно-читаемые метрики и конфигурация находятся в [`../artifacts/metrics.json`](../artifacts/metrics.json).
+Все приведённые значения относятся к `FAST_MODE=False`. Машинно-читаемые метрики и конфигурация находятся в [metrics.json](https://github.com/kamii86/deep-learning-robustness-lab/blob/submission/hw1/artifacts/metrics.json).
 
 ## CIFAR-10
 
