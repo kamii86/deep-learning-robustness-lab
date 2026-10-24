@@ -10,7 +10,7 @@
 
 ## Собственные реализации
 
-В [`../hw1.ipynb`](../hw1.ipynb) реализованы прямой и обратный проходы свёртки, BatchNorm и её объединение со свёрткой в `eval()`, AdamW с decoupled weight decay, cosine learning-rate schedule, residual-блоки, градиентные adversarial-атаки и бонусные эксперименты. Это исследовательский ноутбук, а не опубликованная библиотека.
+В [hw1.ipynb](https://github.com/kamii86/deep-learning-robustness-lab/blob/submission/hw1/hw1.ipynb) реализованы прямой и обратный проходы свёртки, BatchNorm и её объединение со свёрткой в `eval()`, AdamW с decoupled weight decay, cosine learning-rate schedule, residual-блоки, градиентные adversarial-атаки и бонусные эксперименты. Это исследовательский ноутбук, а не опубликованная библиотека.
 
 ## Корректное сравнение метрик
 
