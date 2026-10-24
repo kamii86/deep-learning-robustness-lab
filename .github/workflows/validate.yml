@@ -1,0 +1,35 @@
+
+name: Deep Learning Project Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Проверка проекта
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Получение файлов
+        uses: actions/checkout@v4
+
+      - name: Проверка документации и графиков
+        run: |
+          test -f README.md
+          test -d figures
+
+          COUNT=$(find figures -maxdepth 1 -name '*.png' | wc -l)
+
+          echo "Найдено графиков: $COUNT"
+          test "$COUNT" -eq 16
+
+      - name: Проверка ноутбука и моделей
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/check_submission.py
