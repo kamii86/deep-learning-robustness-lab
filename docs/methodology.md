@@ -1,31 +1,30 @@
-# Methodology
+# Методика экспериментов
 
-## Data and model family
+## Данные и модели
 
-- **CIFAR-10:** 50,000 train and 10,000 test images, 32×32 RGB. Channel-wise mean/std computed from training images. 20 epochs for ResNet-20; 10 epochs for plain ablations.
-- **FashionMNIST:** 60,000 training images and 1,000 test images used in the final experiment. Images are scaled to [0,1]; CNN classifiers are trained for five epochs.
-- **Hardware:** Tesla T4 GPU. `FAST_MODE=False`, `ATTACK_TRACK='targeted'`.
+**CIFAR-10:** 50 000 обучающих и 10 000 тестовых изображений размером 32×32 RGB. Среднее и стандартное отклонение по каналам оценены по train. ResNet-20 обучалась 20 эпох; plain-20 и plain-56 — по 10 эпох для сравнения оптимизации.
 
-## Core implementations
+**FashionMNIST:** 60 000 обучающих изображений и первые 1000 тестовых изображений для финальных сравнений. Пиксели приводятся к диапазону [0, 1]. Классификаторы обучены 5 эпох.
 
-The notebook includes explicit convolution forward/backward, BatchNorm and fusion, custom AdamW with decoupled weight decay and bias corrections, a cosine scheduler, ResNet blocks, gradient-based adversarial attacks, and selected bonus experiments. No claim is made that this is a standalone reusable package; the executable source is the notebook.
+**Окружение:** Tesla T4, PyTorch 2.11, `FAST_MODE=False`, `ATTACK_TRACK='targeted'`.
 
-## Evaluation protocols
+## Собственные реализации
 
-**Do not mix clean accuracy, attacked accuracy, target hit rate, or training-set/held-out estimates.** PGD attack budgets use normalized pixel intensities [0,1]; the norm constraint and `eps` units should be read directly from each experiment. Targeted success is measured as the fraction reaching the selected target class, which is distinct from ordinary classification accuracy.
+В [`../hw1.ipynb`](../hw1.ipynb) реализованы прямой и обратный проходы свёртки, BatchNorm и её объединение со свёрткой в `eval()`, AdamW с decoupled weight decay, cosine learning-rate schedule, residual-блоки, градиентные adversarial-атаки и бонусные эксперименты. Это исследовательский ноутбук, а не опубликованная библиотека.
 
-`sanity_checks` evaluates FGSM, PGD-20, and PGD-100 with five random restarts, and checks the ε=1 case. The reported evaluation subset for sanity checks is 256 images; the PGD-20 accuracy curve uses 1,000 FashionMNIST test images. Those figures need not match exactly.
+## Корректное сравнение метрик
 
-FGSM metrics recorded *during adversarial training* use a different evaluation setup from the separate held-out `sanity_checks`: the sanity evaluation may also count only images correctly predicted on clean inputs before an adversarial success can be counted. Consequently, a high FGSM result from a training trajectory should **not** be equated with a separate sanity-check figure.
+Нельзя смешивать **clean accuracy**, accuracy под атакой и **target hit rate**. PGD-L∞ и PGD-L2 используют разные ограничения нормы; совпадение accuracy не означает эквивалентность бюджетов атак.
 
-## Scope and limitations
+`sanity_checks` использует отдельную тестовую подвыборку из 256 изображений, тогда как зависимости accuracy от ε оценены на 1000 изображений. В sanity checks атака также может оцениваться по критерию, учитывающему правильное исходное предсказание модели. Поэтому два результата FGSM, полученные разными процедурами, не обязаны совпадать.
 
-- A single fixed-seed run cannot establish architecture or attack superiority across distributions.
-- Adversarial robustness is empirical and attack-specific here; none of the results are certified.
-- `PGD-AT` achieves high robustness at the training ε=0.1 but loses accuracy as ε grows.
-- The 56-layer plain model was given the same finite epoch budget as the 20-layer one, so its underperformance should be described in terms of this setup.
-- Reproducibility of exact GPU numerical results is not guaranteed across PyTorch and CUDA versions.
+Успешность targeted PGD оценивается долей переводов в целевой класс и не эквивалентна обычной accuracy. При анализе catastrophic overfitting нужно проверять устойчивость сильной многократной атакой, а не ориентироваться только на FGSM accuracy.
 
-## Provenance
+## Ограничения
 
-Figures are exported directly from saved outputs in `hw1.ipynb`; metrics and checkpoints are from the same final Colab run. The pinned `requirements.txt` is from the original assignment distribution.
+- Один seed и ограниченный бюджет эпох не дают статистически надёжного превосходства одной архитектуры над другой.
+- Empirical robustness ограничена конкретными атаками; сертифицированной устойчивости нет.
+- Нельзя переносить выводы L∞-robustness на L0 без дополнительных экспериментов.
+- Численные итоги зависят от PyTorch, CUDA и аппаратной платформы.
+
+Рисунки экспортированы непосредственно из сохранённых outputs ноутбука, метрики и веса — из соответствующего полного прогона Colab.

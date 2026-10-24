@@ -1,39 +1,52 @@
-# Experiment results
+# Численные результаты финального запуска
 
-All numbers below refer to the recorded final run (`FAST_MODE=False`); the machine-readable experiment configuration and mandatory results are in [`../artifacts/metrics.json`](../artifacts/metrics.json).
+Все приведённые значения относятся к `FAST_MODE=False`. Машинно-читаемые метрики и конфигурация находятся в [`../artifacts/metrics.json`](../artifacts/metrics.json).
 
-## CIFAR-10 — ResNet and plain-network ablation
+## CIFAR-10
 
-| Model | Epochs | Train accuracy | Test accuracy | Final train loss |
+| Модель | Эпохи | Train accuracy | Test accuracy | Train loss в конце |
 |---|---:|---:|---:|---:|
-| ResNet-20 | 20 | 99.98% | 83.05% | 0.0105 |
-| Plain-20 | 10 | 86.01% | 78.62% | 0.4419 |
-| Plain-56 | 10 | 57.62% | 54.83% | 1.1619 |
+| ResNet-20 | 20 | 99,98% | **83,05%** | 0,0105 |
+| Plain-20 | 10 | 86,01% | 78,62% | 0,4419 |
+| Plain-56 | 10 | 57,62% | 54,83% | 1,1619 |
 
-ResNet-20's train/test gap is **16.93 p.p.** Under the same budget, the deeper *plain* network performed worse on train and test, consistent with an optimization/degradation problem in this experiment.
+Разрыв train/test для ResNet-20 — 16,93 п.п. Худшая train accuracy более глубокой plain-56 свидетельствует прежде всего о проблемах оптимизации в рамках данного бюджета обучения.
 
-## FashionMNIST — adversarial robustness
+## FashionMNIST — PGD-20 L∞
 
-| PGD-20 L∞ budget | Standard accuracy | PGD-7 adversarially trained accuracy |
+| ε | Обычная модель | PGD-AT |
 |---:|---:|---:|
-| ε=0.00 | 91.70% | 82.90% |
-| ε=0.05 | 12.20% | 77.70% |
-| ε=0.10 | 0.60% | 70.40% |
-| ε=0.15 | 0.00% | 51.50% |
-| ε=0.20 | 0.00% | 16.00% |
-| ε=0.30 | 0.00% | 0.10% |
+| 0,00 | 91,70% | 82,90% |
+| 0,05 | 12,20% | 77,70% |
+| 0,10 | 0,60% | **70,40%** |
+| 0,15 | 0,00% | 51,50% |
+| 0,20 | 0,00% | 16,00% |
+| 0,30 | 0,00% | 0,10% |
 
-Clean accuracy trade-off: **−8.80 p.p.**. Empirical PGD-20 gain at ε=0.10: **+69.80 p.p.**
+Цена робастности по clean accuracy составляет 8,80 п.п.; преимущество PGD-AT при ε = 0,1 — 69,80 п.п.
 
-Strong-attack sanity evaluation is measured separately (256-image evaluation subset): Standard FGSM/PGD-20/PGD-100×5 = 7.42%/1.17%/0.78%; PGD-AT = 75.78%/71.88%/71.48%. These should not be mixed with the 1,000-image ε-sweep.
+### Усиленная проверка атак
 
-## Other observations
+Для отдельной подвыборки из 256 тестовых изображений:
 
-- **PGD-L2 vs PGD-L∞:** the closest ε₂ grid point (1.5) yielded 1.10% vs 0.60% L∞ accuracy, difference 0.50 p.p. Matching accuracy is not a matching norm budget.
-- **Targeted PGD:** direction matters; Pullover → Sneaker had 18.02% target hit rate, while several ankle-boot target pairs reached 100%. Reported rates depend on sample selection.
-- **Saliency background share:** 59.25% standard vs 21.36% PGD-AT, reported on 1,000 images. This correlates with, but does not prove, robustness.
-- **Sharpness:** final estimates of approx. 9.99 / 38.44 / 21.34 for step sizes 0.01 / 0.05 / 0.10, against local quadratic thresholds 200 / 40 / 20.
-- **L0 attacks:** at k=10 modified pixels, standard and PGD-AT accuracies were 38.40% and 59.80%; at k=30, 3.20% and 29.40%. L∞ training does not mathematically guarantee L0 robustness.
-- **Catastrophic overfitting:** the FGSM-trained model's PGD-20 accuracy collapsed to ~0% by epoch 3; FGSM-RS did not collapse over five epochs. PGD-100×5 reached 0% vs 38.28% on the selected sanity subset.
+| Атака | Обычная модель | PGD-AT |
+|---|---:|---:|
+| FGSM | 7,42% | 75,78% |
+| PGD-20 | 1,17% | 71,88% |
+| PGD-100×5 | 0,78% | 71,48% |
+| ε = 1 | 0% | 0% |
 
-**A note on certainty:** single seed, finite training budget, finite attack steps and random restarts — these are experiment results, not global statements or security guarantees.
+Эти значения нельзя напрямую отождествлять с кривой на 1000 изображений.
+
+## Остальные эксперименты
+
+- **PGD-L2:** ближайшая точка ε₂ = 1,5 дала accuracy 1,10% против 0,60% для PGD-L∞ с ε = 0,1; разница 0,50 п.п.
+- **Targeted PGD:** Pullover → Sneaker — 18,02% успешности. Некоторые пары, направленные из Ankle boot, достигли 100%. Результат сильно зависит от направления атаки.
+- **Input gradients:** масса градиента на фоне: 59,25% standard и 21,36% PGD-AT.
+- **Edge of Stability:** конечные оценки sharpness ≈9,99 / 38,44 / 21,34 для η=0,01/0,05/0,1; границы 2/η: 200/40/20.
+- **L0:** accuracy при k=10 — 38,40% standard против 59,80% PGD-AT; при k=30 — 3,20% против 29,40%.
+- **Catastrophic overfitting:** FGSM-модель потеряла PGD-20 robustness в первых трёх эпохах; FGSM-RS сохранила устойчивость. PGD-100×5 дала 0% vs 38,28% на отдельной подвыборке.
+
+## Интерпретация
+
+Это наблюдения одного запуска. Они не доказывают универсального превосходства архитектуры/оптимизатора, не являются сертифицированной adversarial robustness и не заменяют эксперименты с несколькими seed.

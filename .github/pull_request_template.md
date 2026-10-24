@@ -1,29 +1,29 @@
-## Summary
+## Что реализовано
 
-- [ ] Implemented and tested the required notebook tasks
-- [ ] Completed the chosen adversarial-attack track and bonus experiments
-- [ ] Preserved the original notebook cell metadata and outputs
+- [x] Свёртки, backward, BatchNorm, AdamW и обучение ResNet
+- [x] PGD-L∞ / PGD-L2, targeted-атака, adversarial training
+- [x] Бонусы 7.1, 7.2, 7.4, 7.5
+- [x] Сохранены результаты всех выполненных ячеек и исходные метаданные задания
 
-## Experiments and environment
+## Окружение и данные
 
-- Full run: `FAST_MODE=False`
-- GPU: NVIDIA Tesla T4
-- CIFAR-10: 50,000 train / 10,000 test
-- FashionMNIST: 60,000 train / 1,000 test evaluated
-- Attack track: `targeted`
-- Selected bonuses: `7.1`, `7.2`, `7.4`, `7.5`
+- Полный прогон: `FAST_MODE=False`
+- Устройство: NVIDIA Tesla T4
+- CIFAR-10: 50 000 train / 10 000 test
+- FashionMNIST: 60 000 train / 1 000 test
+- Ветка атаки: `targeted`
 
-## Key observations
+## Ключевые итоги
 
-- ResNet-20 CIFAR-10 test accuracy: **83.05%**.
-- PGD-20 accuracy at ε=0.1: **0.60% standard → 70.40% PGD-AT**.
-- FGSM vs FGSM-RS show contrasting robustness trajectories in the bonus case study.
+- ResNet-20 на CIFAR-10: **83,05% test accuracy**.
+- PGD-20, ε = 0,1: **0,60% стандартная модель → 70,40% PGD-AT**.
+- Исследован catastrophic overfitting при FGSM training; random start улучшил устойчивость.
 
-## Review checklist
+## Чек-лист проверки
 
-- [ ] All notebook cells execute and their outputs are saved
-- [ ] Checkpoint and `metrics.json` files are present in `artifacts/`
-- [ ] Notebook answers describe the actual results
-- [ ] No private tokens or local data dumps are included
+- [x] Сохранены outputs ячеек
+- [x] В `artifacts/` находятся `metrics.json` и три checkpoint-файла
+- [x] В ноутбуке есть ответы и численные выводы
+- [x] Нет приватных ключей, токенов и локальных датасетов
 
-**Feedback / verdict:** Please leave the evaluation and comments in this pull request, as requested in the assignment.
+**Прошу оставить замечания и итоговую оценку в комментариях к этому Pull Request.**
