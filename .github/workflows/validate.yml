@@ -30,6 +30,12 @@ jobs:
           echo "Найдено графиков: $COUNT"
           test "$COUNT" -eq 16
 
+      
       - name: Проверка ноутбука и моделей
-        if: github.event_name == 'pull_request'
-        run: python3 scripts/check_submission.py
+        run: |
+          if [ -f scripts/check_submission.py ]; then
+            python3 scripts/check_submission.py
+          else
+            echo "Ноутбук ещё не объединён с main"
+          fi
+
