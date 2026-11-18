@@ -1,0 +1,37 @@
+{
+  "model": "google/bert_uncased_L-2_H-128_A-2",
+  "revision": "30b0a37ccaaa32f332884b96992754e246e48c5f",
+  "license": "apache-2.0",
+  "split": "validation",
+  "params": 4371601,
+  "main_params": 11109137,
+  "train_seconds": 95.93918925499929,
+  "metrics": {
+    "f1_micro": 0.506802318703419,
+    "f1_macro": 0.38937283055029215,
+    "precision": 0.47684772929652713,
+    "recall": 0.5407725321888412
+  },
+  "main_metrics": {
+    "f1_micro": 0.6531158714703019,
+    "f1_macro": 0.5700536685539999,
+    "precision": 0.6305522914218566,
+    "recall": 0.6773542034839687
+  },
+  "inference_main": {
+    "mean_ms": 56.00673150001967,
+    "median_ms": 54.65615100001742,
+    "std_ms": 4.971119158875004,
+    "repeats": 12,
+    "batch_size": 16,
+    "padded_subwords": 74
+  },
+  "inference_alt": {
+    "mean_ms": 10.796502666683713,
+    "median_ms": 10.627918500176747,
+    "std_ms": 0.8820471247060279,
+    "repeats": 12,
+    "batch_size": 16,
+    "padded_subwords": 74
+  }
+}

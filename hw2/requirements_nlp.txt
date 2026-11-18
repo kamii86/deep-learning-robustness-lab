@@ -1,0 +1,10 @@
+# ДЗ2, вариант NLP (NER). Проверено 03.11.2026 на Kaggle T4: Python 3.13, torch 2.11, transformers 5.22.1, datasets 5.1.0
+# Colab / Kaggle: эти же пины ставит первая ячейка hw2_nlp.ipynb, отдельно ставить не нужно
+# Локально: сначала torch под свою платформу (https://pytorch.org/get-started/locally/), потом этот файл
+torch>=2.4
+transformers==5.22.1
+datasets==5.1.0
+accelerate==1.15.0
+seqeval==1.2.2
+numpy
+matplotlib
