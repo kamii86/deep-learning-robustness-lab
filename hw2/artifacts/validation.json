@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "fast_mode": false,
+  "code_cells_executed": 49,
+  "original_assertions_preserved": 44,
+  "original_function_signatures_preserved": true,
+  "original_property_test_cases": 2000,
+  "errors_in_outputs": 0,
+  "embedded_plots": 6,
+  "smoke_status": "passed",
+  "smoke_seconds": 78.0,
+  "notebook_sha256": "4b70880adc636ed4c321bfca5ab1d9bf28bc9a16e41715e9c528a872f31464c0",
+  "execution": "All cells sequentially executed in a fresh IPython process; real rich outputs retained."
+}

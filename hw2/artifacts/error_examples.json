@@ -1,0 +1,300 @@
+{
+  "boundary": [
+    {
+      "sentence_id": 1,
+      "sentence": "`` Puirt à beul `` has sometimes been used for dancing when no instruments were available .",
+      "category": "boundary",
+      "gold": {
+        "start": 1,
+        "end": 4,
+        "type": "art",
+        "text": "Puirt à beul"
+      },
+      "pred": {
+        "start": 2,
+        "end": 3,
+        "type": "art",
+        "text": "à"
+      }
+    },
+    {
+      "sentence_id": 5,
+      "sentence": "Domenico dell'Allio ( 1505–1563 ) was an Italian Renaissance architect , working mostly in what was then Inner Austria , present-day Slovenia and the Austrian states of Styria and Carinthia .",
+      "category": "boundary",
+      "gold": {
+        "start": 17,
+        "end": 19,
+        "type": "location",
+        "text": "Inner Austria"
+      },
+      "pred": {
+        "start": 18,
+        "end": 19,
+        "type": "location",
+        "text": "Austria"
+      }
+    },
+    {
+      "sentence_id": 12,
+      "sentence": "First Air Flight 6560 was a domestic charter flight that crashed on landing at Resolute , Nunavut , Canada , on 20 August 2011 .",
+      "category": "boundary",
+      "gold": {
+        "start": 2,
+        "end": 4,
+        "type": "product",
+        "text": "Flight 6560"
+      },
+      "pred": {
+        "start": 1,
+        "end": 4,
+        "type": "product",
+        "text": "Air Flight 6560"
+      }
+    },
+    {
+      "sentence_id": 19,
+      "sentence": "Formed in February 2013 , the party is the result of a merger of Nigeria 's three biggest opposition parties – the Action Congress of Nigeria ( ACN ) , the Congress for Progressive Change ( CPC ) , the All Nigeria Peoples Party ( ANPP ) , a faction of the All Progressives Grand Alliance ( APGA ) and the new PDP - a faction of then ruling People 's Democratic Party .",
+      "category": "boundary",
+      "gold": {
+        "start": 69,
+        "end": 73,
+        "type": "organization",
+        "text": "People 's Democratic Party"
+      },
+      "pred": {
+        "start": 71,
+        "end": 73,
+        "type": "organization",
+        "text": "Democratic Party"
+      }
+    },
+    {
+      "sentence_id": 30,
+      "sentence": "Theresa Helburn of the Theatre Guild presided over the groundbreaking ceremony .",
+      "category": "boundary",
+      "gold": {
+        "start": 4,
+        "end": 6,
+        "type": "organization",
+        "text": "Theatre Guild"
+      },
+      "pred": {
+        "start": 5,
+        "end": 6,
+        "type": "organization",
+        "text": "Guild"
+      }
+    }
+  ],
+  "type": [
+    {
+      "sentence_id": 2,
+      "sentence": "On duty , Columbo drives his own car , a French 1959 Peugeot 403 convertible equipped with a police radio .",
+      "category": "type",
+      "gold": {
+        "start": 10,
+        "end": 11,
+        "type": "location",
+        "text": "French"
+      },
+      "pred": {
+        "start": 10,
+        "end": 11,
+        "type": "product",
+        "text": "French"
+      }
+    },
+    {
+      "sentence_id": 4,
+      "sentence": "Regional competitions are held in most countries to select teams in the lead-up to the Festival , with winners of these going into the final round of the competitions at Cannes Lions .",
+      "category": "type",
+      "gold": {
+        "start": 30,
+        "end": 31,
+        "type": "location",
+        "text": "Cannes"
+      },
+      "pred": {
+        "start": 30,
+        "end": 32,
+        "type": "organization",
+        "text": "Cannes Lions"
+      }
+    },
+    {
+      "sentence_id": 5,
+      "sentence": "Domenico dell'Allio ( 1505–1563 ) was an Italian Renaissance architect , working mostly in what was then Inner Austria , present-day Slovenia and the Austrian states of Styria and Carinthia .",
+      "category": "type",
+      "gold": {
+        "start": 7,
+        "end": 8,
+        "type": "other",
+        "text": "Italian"
+      },
+      "pred": {
+        "start": 7,
+        "end": 8,
+        "type": "location",
+        "text": "Italian"
+      }
+    },
+    {
+      "sentence_id": 7,
+      "sentence": "`` The Kingdom of This World `` takes place prior to , during , and after the Haitian Revolution which began in 1791 and led to the declaration of Haitian independence in 1804 .",
+      "category": "type",
+      "gold": {
+        "start": 1,
+        "end": 6,
+        "type": "event",
+        "text": "The Kingdom of This World"
+      },
+      "pred": {
+        "start": 1,
+        "end": 6,
+        "type": "art",
+        "text": "The Kingdom of This World"
+      }
+    },
+    {
+      "sentence_id": 12,
+      "sentence": "First Air Flight 6560 was a domestic charter flight that crashed on landing at Resolute , Nunavut , Canada , on 20 August 2011 .",
+      "category": "type",
+      "gold": {
+        "start": 0,
+        "end": 2,
+        "type": "organization",
+        "text": "First Air"
+      },
+      "pred": {
+        "start": 0,
+        "end": 1,
+        "type": "event",
+        "text": "First"
+      }
+    }
+  ],
+  "missed": [
+    {
+      "sentence_id": 3,
+      "sentence": "`` You and Me Song `` was also included to capitalise on The Wannadies post- '' Romeo + Juliet `` success .",
+      "category": "missed",
+      "gold": {
+        "start": 12,
+        "end": 14,
+        "type": "organization",
+        "text": "The Wannadies"
+      },
+      "pred": null
+    },
+    {
+      "sentence_id": 5,
+      "sentence": "Domenico dell'Allio ( 1505–1563 ) was an Italian Renaissance architect , working mostly in what was then Inner Austria , present-day Slovenia and the Austrian states of Styria and Carinthia .",
+      "category": "missed",
+      "gold": {
+        "start": 8,
+        "end": 9,
+        "type": "event",
+        "text": "Renaissance"
+      },
+      "pred": null
+    },
+    {
+      "sentence_id": 20,
+      "sentence": "The facility was officially renamed Nashville Arena again , and all Gaylord signage was removed from the building 's exterior on March 16 , 2007 .",
+      "category": "missed",
+      "gold": {
+        "start": 11,
+        "end": 12,
+        "type": "location",
+        "text": "Gaylord"
+      },
+      "pred": null
+    },
+    {
+      "sentence_id": 24,
+      "sentence": "Originally an extension API , it was available as a standard API in Java SE ( from Java SE 6 on ) and Java EE , but was removed in Java SE 11 .",
+      "category": "missed",
+      "gold": {
+        "start": 3,
+        "end": 4,
+        "type": "product",
+        "text": "API"
+      },
+      "pred": null
+    },
+    {
+      "sentence_id": 24,
+      "sentence": "Originally an extension API , it was available as a standard API in Java SE ( from Java SE 6 on ) and Java EE , but was removed in Java SE 11 .",
+      "category": "missed",
+      "gold": {
+        "start": 11,
+        "end": 12,
+        "type": "product",
+        "text": "API"
+      },
+      "pred": null
+    }
+  ],
+  "spurious": [
+    {
+      "sentence_id": 14,
+      "sentence": "Its popularity helped Küchen get chosen for the court of Grand Duke Paul Friedrich von Mecklenburg-Schwerin .",
+      "category": "spurious",
+      "gold": null,
+      "pred": {
+        "start": 3,
+        "end": 4,
+        "type": "person",
+        "text": "Küchen"
+      }
+    },
+    {
+      "sentence_id": 14,
+      "sentence": "Its popularity helped Küchen get chosen for the court of Grand Duke Paul Friedrich von Mecklenburg-Schwerin .",
+      "category": "spurious",
+      "gold": null,
+      "pred": {
+        "start": 12,
+        "end": 16,
+        "type": "person",
+        "text": "Paul Friedrich von Mecklenburg-Schwerin"
+      }
+    },
+    {
+      "sentence_id": 21,
+      "sentence": "Jackson County is home to many attractions and recreation spots such as Flat Lick Falls , S-Tree Campground , Turkey Foot Campground , and the centermost trailhead ( located in the county seat , McKee ) of the historic Sheltowee Trace .",
+      "category": "spurious",
+      "gold": null,
+      "pred": {
+        "start": 25,
+        "end": 27,
+        "type": "location",
+        "text": "centermost trailhead"
+      }
+    },
+    {
+      "sentence_id": 38,
+      "sentence": "The name `` Wiesentracht `` is given to Oktoberfest dirndls , referring to the Theresienwiese , where the Oktoberfest events occur .",
+      "category": "spurious",
+      "gold": null,
+      "pred": {
+        "start": 9,
+        "end": 10,
+        "type": "other",
+        "text": "dirndls"
+      }
+    },
+    {
+      "sentence_id": 38,
+      "sentence": "The name `` Wiesentracht `` is given to Oktoberfest dirndls , referring to the Theresienwiese , where the Oktoberfest events occur .",
+      "category": "spurious",
+      "gold": null,
+      "pred": {
+        "start": 14,
+        "end": 15,
+        "type": "location",
+        "text": "Theresienwiese"
+      }
+    }
+  ]
+}
